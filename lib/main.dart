@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'elements/work_card.dart';
+import 'package:principios/principal_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,31 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          leading: Container(),
-          title: const Text(
-            'Tarefas',
-          ),
-        ),
-        body: ListView(
-          children: const [
-            WorkCard(
-              text: 'Aprender Flutter',
-            ),
-            WorkCard(
-              text: 'Aprender Dart',
-            ),
-            WorkCard(
-              text: 'Resolver pendências da faculdade',
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.amber,
-        ),
-      ),
+      home: const PrincipalScreen(),
     );
   }
 }
