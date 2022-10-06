@@ -19,6 +19,8 @@ class WorkCard extends StatefulWidget {
 
 class _WorkCardState extends State<WorkCard> {
   int nivel = 0;
+  double value = 0;
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +28,42 @@ class _WorkCardState extends State<WorkCard> {
       padding: const EdgeInsets.all(8.0),
       child: Stack(
         children: [
-          Container(
-            height: 140,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              color: Colors.blue,
+          if (count == 0)
+            Container(
+              height: 140,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Colors.blue,
+                //(count == 0) ? Colors.blue : Colors.red,
+              ),
             ),
-          ),
+          if (count == 1)
+            Container(
+              height: 140,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Colors.red,
+                //(count == 0) ? Colors.blue : Colors.red,
+              ),
+            ),
+          if (count == 2)
+            Container(
+              height: 140,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Colors.purple,
+                //(count == 0) ? Colors.blue : Colors.red,
+              ),
+            ),
+          if (count >= 3)
+            Container(
+              height: 140,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Colors.black,
+                //(count == 0) ? Colors.blue : Colors.red,
+              ),
+            ),
           Column(
             children: [
               Container(
@@ -81,9 +112,16 @@ class _WorkCardState extends State<WorkCard> {
                       width: 52,
                       child: ElevatedButton(
                         onPressed: () {
-                          setState(() {
-                            nivel++;
-                          });
+                          setState(
+                            () {
+                              if (value == 1) {
+                                nivel = 0;
+                                count = count + 1;
+                              } else {
+                                nivel++;
+                              }
+                            },
+                          );
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -110,8 +148,8 @@ class _WorkCardState extends State<WorkCard> {
                       child: LinearProgressIndicator(
                         color: Colors.white,
                         value: (widget.difficulty > 0)
-                            ? (nivel / widget.difficulty) / 10
-                            : 1,
+                            ? value = (nivel / widget.difficulty) / 10
+                            : value = 1,
                       ),
                     ),
                     Text(
